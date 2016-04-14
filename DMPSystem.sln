@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DMPSystem.Core", "DMPSystem.Core", "{908B26AB-B5B1-458A-806C-27B31FD7CDC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMPSystem.Core.Common", "DMPSystem.Core\DMPSystem.Core.Common\DMPSystem.Core.Common.csproj", "{121BC088-E44D-4C46-89FF-565D1121593B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMPSystem.Core.Logger", "DMPSystem.Core\DMPSystem.Core.Logger\DMPSystem.Core.Logger.csproj", "{5D7FDD3D-6DAF-4E95-A749-4B144E2AB678}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMPSystem.Core.System", "DMPSystem.Core\DMPSystem.Core.System\DMPSystem.Core.System.csproj", "{0663F50A-8761-465E-BC0A-C500BB640218}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DMPSystem.DataAccess", "DMPSystem.DataAccess", "{64F3DF75-5FC7-4B29-B1E5-FA617D4DCE83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMPSystem.DataAccess.DMPHub", "DMPSystem.DataAccess.DMPConfig\DMPSystem.DataAccess.DMPHub.csproj", "{5335B826-CED2-45D1-91BA-C97F1C868105}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DMPSystem.Modules", "DMPSystem.Modules", "{FEB2A83F-CEB1-45C3-B331-0241223AC7C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DMPSystem.IModuleServices", "DMPSystem.IModuleServices", "{3A6F457E-C73B-418C-B6F5-F8308EEF1645}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMPSystem.IModuleServices.DMPHub", "DMPSystem.IModuleServices\DMPSystem.IModuleServices.DMPHub\DMPSystem.IModuleServices.DMPHub.csproj", "{DEE1B18E-3656-4CC4-9C81-FD8CB5336EAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMPSystem.Modules.DMPHub", "DMPSystem.Modules\DMPSystem.Modules.DMPHub\DMPSystem.Modules.DMPHub.csproj", "{9A52AEEE-9B79-4018-9177-2829086643BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DMPSystem.Services", "DMPSystem.Services", "{F4997F53-0C0E-41D5-A287-8795ABFDB0C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMPSystem.Services.DMPHubWcfService", "DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\DMPSystem.Services.DMPHubWcfService.csproj", "{1D31A404-3D77-43EB-A5E2-A38A6DAC2379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMPSystem.Services.DMPHubServiceContract", "DMPSystem.Services\DMPSystem.Services.DMPHubServiceContract\DMPSystem.Services.DMPHubServiceContract.csproj", "{92FCAE8E-2198-48A6-89C9-8AA53EA0075B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{121BC088-E44D-4C46-89FF-565D1121593B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{121BC088-E44D-4C46-89FF-565D1121593B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{121BC088-E44D-4C46-89FF-565D1121593B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{121BC088-E44D-4C46-89FF-565D1121593B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D7FDD3D-6DAF-4E95-A749-4B144E2AB678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7FDD3D-6DAF-4E95-A749-4B144E2AB678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7FDD3D-6DAF-4E95-A749-4B144E2AB678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7FDD3D-6DAF-4E95-A749-4B144E2AB678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0663F50A-8761-465E-BC0A-C500BB640218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0663F50A-8761-465E-BC0A-C500BB640218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0663F50A-8761-465E-BC0A-C500BB640218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0663F50A-8761-465E-BC0A-C500BB640218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5335B826-CED2-45D1-91BA-C97F1C868105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5335B826-CED2-45D1-91BA-C97F1C868105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5335B826-CED2-45D1-91BA-C97F1C868105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5335B826-CED2-45D1-91BA-C97F1C868105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEE1B18E-3656-4CC4-9C81-FD8CB5336EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEE1B18E-3656-4CC4-9C81-FD8CB5336EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEE1B18E-3656-4CC4-9C81-FD8CB5336EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEE1B18E-3656-4CC4-9C81-FD8CB5336EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A52AEEE-9B79-4018-9177-2829086643BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A52AEEE-9B79-4018-9177-2829086643BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A52AEEE-9B79-4018-9177-2829086643BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A52AEEE-9B79-4018-9177-2829086643BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D31A404-3D77-43EB-A5E2-A38A6DAC2379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D31A404-3D77-43EB-A5E2-A38A6DAC2379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D31A404-3D77-43EB-A5E2-A38A6DAC2379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D31A404-3D77-43EB-A5E2-A38A6DAC2379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92FCAE8E-2198-48A6-89C9-8AA53EA0075B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92FCAE8E-2198-48A6-89C9-8AA53EA0075B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92FCAE8E-2198-48A6-89C9-8AA53EA0075B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92FCAE8E-2198-48A6-89C9-8AA53EA0075B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{121BC088-E44D-4C46-89FF-565D1121593B} = {908B26AB-B5B1-458A-806C-27B31FD7CDC4}
+		{5D7FDD3D-6DAF-4E95-A749-4B144E2AB678} = {908B26AB-B5B1-458A-806C-27B31FD7CDC4}
+		{0663F50A-8761-465E-BC0A-C500BB640218} = {908B26AB-B5B1-458A-806C-27B31FD7CDC4}
+		{5335B826-CED2-45D1-91BA-C97F1C868105} = {64F3DF75-5FC7-4B29-B1E5-FA617D4DCE83}
+		{9A52AEEE-9B79-4018-9177-2829086643BC} = {FEB2A83F-CEB1-45C3-B331-0241223AC7C5}
+		{DEE1B18E-3656-4CC4-9C81-FD8CB5336EAF} = {3A6F457E-C73B-418C-B6F5-F8308EEF1645}
+		{1D31A404-3D77-43EB-A5E2-A38A6DAC2379} = {F4997F53-0C0E-41D5-A287-8795ABFDB0C7}
+		{92FCAE8E-2198-48A6-89C9-8AA53EA0075B} = {F4997F53-0C0E-41D5-A287-8795ABFDB0C7}
+	EndGlobalSection
+EndGlobal

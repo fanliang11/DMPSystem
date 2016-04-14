@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{121BC088-E44D-4C46-89FF-565D1121593B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DMPSystem.Core.Common</RootNamespace>
+    <AssemblyName>DMPSystem.Core.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.1.0\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cryptography\BitType.cs" />
+    <Compile Include="Cryptography\CryptogramProvider.cs" />
+    <Compile Include="Cryptography\Md5Provider.cs" />
+    <Compile Include="Cryptography\RSAEncryString.cs" />
+    <Compile Include="Cryptography\SHA1Provider.cs" />
+    <Compile Include="Extensions\EnumerableExtension.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Extensions\XmlSerializerExension.cs" />
+    <Compile Include="FormatModel\Page.cs" />
+    <Compile Include="FormatModel\QueryParams.cs" />
+    <Compile Include="FormatQueryParaProvider.cs" />
+    <Compile Include="Http\HttpProvider.cs" />
+    <Compile Include="MapperProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CommonProvider.cs" />
+    <Compile Include="Providers\ConvertProvider.cs" />
+    <Compile Include="Providers\EnumProvider.cs" />
+    <Compile Include="Providers\FileProvider.cs" />
+    <Compile Include="Providers\IpProvider.cs" />
+    <Compile Include="Providers\RegexProvider.cs" />
+    <Compile Include="Providers\ValidationProvider.cs" />
+    <Compile Include="Providers\XmlProvider.cs" />
+    <Compile Include="RandomProvider.cs" />
+    <Compile Include="ServiceResult.cs" />
+    <Compile Include="ServicesException\ApiServiceResult.cs" />
+    <Compile Include="ServicesException\Attribute\CustomRequired.cs" />
+    <Compile Include="ServicesException\ErrorInfo.cs" />
+    <Compile Include="ServicesException\ServiceException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DMPSystem.Core.Logger\DMPSystem.Core.Logger.csproj">
+      <Project>{5d7fdd3d-6daf-4e95-a749-4b144e2ab678}</Project>
+      <Name>DMPSystem.Core.Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ServicesException\Codes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,10 @@
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\bin\Debug\DMPSystem.DataAccess.DMPConfig.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\bin\Debug\DMPSystem.DataAccess.DMPConfig.pdb
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\bin\Debug\EntityFramework.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\bin\Debug\EntityFramework.xml
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\obj\Debug\DMPSystem.DataAccess.DMPConfig.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\obj\Debug\DMPSystem.DataAccess.DMPConfig.pdb
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\bin\Debug\DMPSystem.DataAccess.DMPConfig.dll.config
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.DataAccess.DMPConfig\obj\Debug\DMPSystem.DataAccess.DMPConfig.csprojResolveAssemblyReference.cache
