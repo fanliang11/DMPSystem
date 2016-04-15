@@ -19,7 +19,7 @@ namespace DMPSystem.Modules.DMPHub.Repositories
         /// </summary>
         /// <param name="id">编号</param>
         /// <returns>返回管理员信息</returns>
-            [InterceptMethod(CachingMethod.Get, Time = 120)]
+         [InterceptMethod(CachingMethod.Get, Time = 120)]
         public virtual Manager GetManagerById(int id)
         {
             using (var db = new DMPHubContext())

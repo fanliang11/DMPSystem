@@ -37,6 +37,8 @@ namespace DMPSystem.Core.Common.ServicesException
             Message = message;
         }
 
+
+
         /// <summary>
         /// 使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 System.Exception 类的新实例。
         /// </summary>
@@ -45,7 +47,8 @@ namespace DMPSystem.Core.Common.ServicesException
         public ServiceException(string message, Exception e)
             : base(message, e)
         {
-            Message = message;
+            Message = string.IsNullOrEmpty(message) ? e.Message : message;
+            this.Source = e.Source;
         }
 
         /// <summary>

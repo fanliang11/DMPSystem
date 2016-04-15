@@ -1,0 +1,5 @@
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.PushEvent\bin\Debug\DMPSystem.Events.PushEvent.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.PushEvent\bin\Debug\DMPSystem.Events.PushEvent.pdb
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.PushEvent\obj\Debug\DMPSystem.Events.PushEvent.csprojResolveAssemblyReference.cache
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.PushEvent\obj\Debug\DMPSystem.Events.PushEvent.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.PushEvent\obj\Debug\DMPSystem.Events.PushEvent.pdb

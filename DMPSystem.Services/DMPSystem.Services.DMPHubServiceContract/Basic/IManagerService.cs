@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 using DMPSystem.Core.Common;
 using DMPSystem.IModuleServices.DMPHub.Models;
@@ -14,6 +15,7 @@ namespace DMPSystem.Services.DMPHubServiceContract.Basic
     public interface IManagerService
     {
         [OperationContract]
-        ServiceResult<Manager> GetManagerById(int id);
+        [WebInvoke(UriTemplate = "GetManagerById/{id}", Method = "GET",BodyStyle = WebMessageBodyStyle.Bare , ResponseFormat = WebMessageFormat.Json)]
+        ServiceResult<Manager> GetManagerById(string id);
     }
 }

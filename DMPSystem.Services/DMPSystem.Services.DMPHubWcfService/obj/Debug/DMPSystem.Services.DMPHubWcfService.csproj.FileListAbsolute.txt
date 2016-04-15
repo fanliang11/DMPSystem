@@ -38,8 +38,6 @@ D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHu
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\bin\Autofac.Extras.DynamicProxy2.xml
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\bin\Castle.Core.xml
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\bin\EntityFramework.xml
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\bin\Newtonsoft.Json.pdb
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\bin\Newtonsoft.Json.xml
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\bin\zh-Hans\EntityFramework.resources.dll
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\obj\Debug\DMPSystem.Services.DMPHubWcfService.csprojResolveAssemblyReference.cache
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.Services\DMPSystem.Services.DMPHubWcfService\obj\Debug\DMPSystem.Services.DMPHubWcfService.dll

@@ -9,6 +9,8 @@ using DMPSystem.Core.Common.ServicesException;
 using DMPSystem.Core.System.Ioc;
 using DMPSystem.IModuleServices.DMPHub.Models;
 using DMPSystem.Services.DMPHubServiceContract.Basic;
+using Newtonsoft.Json;
+using ServiceStack.Text;
 
 
 namespace DMPSystem.Services.DMPHubWcfService.Basic
@@ -27,19 +29,21 @@ namespace DMPSystem.Services.DMPHubWcfService.Basic
             _managerService = manager;
         }
 
-        public ServiceResult<Manager> GetManagerById(int id)
+        public ServiceResult<Manager> GetManagerById(string id)
         {
             try
             {
                 ServiceResult<Manager> result = null;
-                result = ServiceResult<Manager>.Create(true, _managerService.GetManagerById(id));
-                return result;
+                var manageId = 0;
+                int.TryParse(id, out manageId);
+                result = ServiceResult<Manager>.Create(true, _managerService.GetManagerById(manageId));
+                return   result;
             }
             catch (ServiceException e)
             {
                 var result = ServiceResult<Manager>.Create(false, e.Message, null);
                 result.ErrorCode = e.Code;
-                return result;
+                return  result;
             }
         }
     }

@@ -69,6 +69,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,6 +82,21 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AppType.cs" />
+    <Compile Include="Authentication\NoVerificationAttribute.cs" />
+    <Compile Include="Authentication\SecureWebServiceHostFactory.cs" />
+    <Compile Include="Authentication\VerificationInspector.cs" />
+    <Compile Include="Events\EventModel\EntityChangeStatus.cs" />
+    <Compile Include="Events\EventModel\EntityDeleted.cs" />
+    <Compile Include="Events\EventModel\EntityGeted.cs" />
+    <Compile Include="Events\EventModel\EntityInserted.cs" />
+    <Compile Include="Events\EventModel\EntityReported.cs" />
+    <Compile Include="Events\EventModel\EntityUpdated.cs" />
+    <Compile Include="Events\EventPublisher\EventPublisher.cs" />
+    <Compile Include="Events\EventPublisher\EventPublisherExtensions.cs" />
+    <Compile Include="Events\EventPublisher\IEventPublisher.cs" />
+    <Compile Include="Events\Subscription\IConsumer.cs" />
+    <Compile Include="Events\Subscription\ISubscriptionService.cs" />
+    <Compile Include="Events\Subscription\SubscriptionService.cs" />
     <Compile Include="Intercept\CacheKeyAttribute.cs" />
     <Compile Include="Intercept\CacheProviderInterceptor.cs" />
     <Compile Include="Intercept\CachingMethod.cs" />
