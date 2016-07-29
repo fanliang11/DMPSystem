@@ -3,7 +3,7 @@
 配置文件 Event.Bindings.config</br>
 &lt;eventProvider&gt; </br>
   &lt;queues&gt;  </br>
-    &lt;queue id=&quot;DMPHubEvent&quot;  </br> class=&quot;DMPSystem.Core.EventBus.Utilities.QueueContext,DMPSystem.Core.EventBus&quot;&gt; </br>
+    &lt;queue id=&quot;DMPHubEvent&quot;    class=&quot;DMPSystem.Core.EventBus.Utilities.QueueContext,DMPSystem.Core.EventBus&quot;&gt; </br>
       &lt;property name=&quot;appRuleFile&quot; ref=&quot;rule&quot;/&gt; </br>
       &lt;property name=&quot;dataContextPool&quot; value=&quot;event_sample&quot;&gt; </br>
         &lt;map name=&quot;RabbitMq&quot;&gt; </br>
@@ -23,6 +23,5 @@
 push publisher:
 
 EventContainer.GetInstances&lt;IEventPublisher&gt;(&quot;PushEvent&quot;).Publish(new ChanageStateEvent() { UserID = manager.UserID });</br>
-rabbitmq publisher:
-
-    _eventPublisher = EventContainer.GetInstances&lt;IEventPublisher&gt;(&quot;DMPHubEvent.RabbitMq&quot;).Publish(new ChanageStateEvent() { UserID = manager.UserID });
+rabbitmq publisher:</br>
+ EventContainer.GetInstances&lt;IEventPublisher&gt;(&quot;DMPHubEvent.RabbitMq&quot;).Publish(new ChanageStateEvent() { UserID = manager.UserID });
