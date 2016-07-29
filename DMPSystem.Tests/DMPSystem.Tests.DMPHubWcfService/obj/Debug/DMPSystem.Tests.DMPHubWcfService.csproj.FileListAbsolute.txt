@@ -1,8 +1,0 @@
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Tests\DMPSystem.Tests.DMPHubWcfService\bin\Debug\DMPSystem.Tests.DMPHubWcfService.dll
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Tests\DMPSystem.Tests.DMPHubWcfService\bin\Debug\DMPSystem.Tests.DMPHubWcfService.pdb
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Tests\DMPSystem.Tests.DMPHubWcfService\bin\Debug\DMPSystem.Core.WebModule.dll
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Tests\DMPSystem.Tests.DMPHubWcfService\bin\Debug\Newtonsoft.Json.dll
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Tests\DMPSystem.Tests.DMPHubWcfService\bin\Debug\DMPSystem.Core.WebModule.pdb
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Tests\DMPSystem.Tests.DMPHubWcfService\obj\Debug\DMPSystem.Tests.DMPHubWcfService.csprojResolveAssemblyReference.cache
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Tests\DMPSystem.Tests.DMPHubWcfService\obj\Debug\DMPSystem.Tests.DMPHubWcfService.dll
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Tests\DMPSystem.Tests.DMPHubWcfService\obj\Debug\DMPSystem.Tests.DMPHubWcfService.pdb

@@ -1,0 +1,6 @@
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Logger\bin\Release\DMPSystem.Core.Logger.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Logger\bin\Release\DMPSystem.Core.Logger.pdb
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Logger\bin\Release\log4net.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Logger\obj\Release\DMPSystem.Core.Logger.csprojResolveAssemblyReference.cache
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Logger\obj\Release\DMPSystem.Core.Logger.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Logger\obj\Release\DMPSystem.Core.Logger.pdb

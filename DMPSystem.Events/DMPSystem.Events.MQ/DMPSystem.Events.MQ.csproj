@@ -39,7 +39,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\packages\SharedSolutionFiles\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Manager\StatusChangeConsumer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DMPSystem.Core\DMPSystem.Core.MQ\DMPSystem.Core.EventBus.csproj">
+      <Project>{D908B335-28FB-42C1-97EB-D0E6A061E139}</Project>
+      <Name>DMPSystem.Core.EventBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DMPSystem.Core\DMPSystem.Core.System\DMPSystem.Core.System.csproj">
+      <Project>{0663F50A-8761-465E-BC0A-C500BB640218}</Project>
+      <Name>DMPSystem.Core.System</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DMPSystem.IModuleServices\DMPSystem.IModuleServices.DMPHub\DMPSystem.IModuleServices.DMPHub.csproj">
+      <Project>{DEE1B18E-3656-4CC4-9C81-FD8CB5336EAF}</Project>
+      <Name>DMPSystem.IModuleServices.DMPHub</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DMPSystem.Events.Models\DMPSystem.Events.Models.csproj">
+      <Project>{D1AA6E9C-AB35-4E72-BE88-4B99387919CC}</Project>
+      <Name>DMPSystem.Events.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

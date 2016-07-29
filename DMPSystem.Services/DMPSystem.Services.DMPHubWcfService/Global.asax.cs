@@ -6,6 +6,7 @@ using System.Reflection;
 using System.ServiceModel.Activation;
 using System.Threading.Tasks;
 using System.Web.Routing;
+using DMPSystem.Core.EventBus;
 using DMPSystem.Core.System.Authentication;
 using DMPSystem.Core.System.Ioc;
 using Autofac;
@@ -25,26 +26,27 @@ namespace DMPSystem.Services.DMPHubWcfService
             builder.RegisterServices();
             builder.RegisterRepositories();
             builder.RegisterWcfServices();
+            builder.RegisterBusinessModules();
             builder.RegisterModules();
 
             var container = builder.Build();
             EnterpriseLibraryContainer.Current = new AutofacServiceLocator(container);
             builder.InitializeModule();
-           
-                var first = (from p in builder.GetReferenceAssembly()
-                    where p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.WcfService
-                    select p.GetTypes().Where(t => !t.IsInterface && t.Name.EndsWith("Service"))).FirstOrDefault(
-                        p => p.Any());
-                if (first == null) return;
-                var services = first.ToList();
+            EventContainer.GetInstances<ISubscriptionAdapt>("DMPHubEvent.RabbitMq").PublishAt();
+            var first = (from p in builder.GetReferenceAssembly()
+                         where p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.WcfService
+                         select p.GetTypes().Where(t => !t.IsInterface && t.Name.EndsWith("Service"))).FirstOrDefault(
+                    p => p.Any());
+            if (first == null) return;
+            var services = first.ToList();
 
-                foreach (var service in services)
-                {
+            foreach (var service in services)
+            {
 
-                    RouteTable.Routes.Add(new ServiceRoute(service.Name,
-                        new WebServiceHostFactory(), service));
-                }
-        
+                RouteTable.Routes.Add(new ServiceRoute(service.Name,
+                    new WebServiceHostFactory(), service));
+            }
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

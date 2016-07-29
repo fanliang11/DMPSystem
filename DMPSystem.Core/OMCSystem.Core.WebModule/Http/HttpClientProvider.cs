@@ -12,12 +12,12 @@ using Newtonsoft.Json;
 
 namespace DMPSystem.Core.WebModule.Http
 {
-    public class HttpClientProvider
+    public static class HttpClientProvider
     {
         static HttpClientProvider()
         {
             //对象所允许的最大并发连接数//可在配置文件中设置
-            System.Net.ServicePointManager.DefaultConnectionLimit = 1000;
+            System.Net.ServicePointManager.DefaultConnectionLimit = 1024;
             //是否使用 Nagle 不使用 提高效率 
             System.Net.ServicePointManager.UseNagleAlgorithm = false;
             //对象的最大空闲时间.(默认为100秒的)
@@ -47,9 +47,50 @@ namespace DMPSystem.Core.WebModule.Http
             return result;
         }
 
-        public static Task<string> GetAsyncResponse(string url)
+        public static async Task<string> GetAsyncResponse(string url)
         {
-           return  Task.Run(() => GetResponse(url));
+           
+               var httpWebRequest = (HttpWebRequest) WebRequest.Create(url);
+               httpWebRequest.ContentType = "application/json";
+               httpWebRequest.Method = "GET";
+               httpWebRequest.Timeout = 20000;
+            //   httpWebRequest.Proxy = null;
+               httpWebRequest.Headers.Add(HttpRequestHeader.AcceptEncoding, "gzip,deflate");
+               httpWebRequest.KeepAlive = true;
+               //数据是否缓冲 false 提高效率  
+               httpWebRequest.AllowWriteStreamBuffering = false;
+               //byte[] btBodys = Encoding.UTF8.GetBytes(body);
+               //httpWebRequest.ContentLength = btBodys.Length;
+               //httpWebRequest.GetRequestStream().Write(btBodys, 0, btBodys.Length);
+
+               var response = await httpWebRequest.GetResponseAsync().Timeout(TimeSpan.FromMilliseconds(20000),"");
+              
+               using (var stm = response.GetResponseStream())
+               {
+                   if (stm == null) return null;
+                   using (var reader = new StreamReader(stm))
+                   {
+                       //var content = reader.ReadToEnd();
+                       var content = await reader.ReadToEndAsync();
+                       return content;
+                   }
+                   
+               }
+        }
+
+        public static async Task Timeout(this Task task, TimeSpan timeout, string msg = "")
+        {
+            var delay = Task.Delay(timeout);
+            if (await Task.WhenAny(task, delay) == delay)
+            {
+                throw new TimeoutException(msg);
+            }
+        }
+
+        public static async Task<T> Timeout<T>(this Task<T> task, TimeSpan timeout, string msg = "")
+        {
+            await ((Task)task).Timeout(timeout, msg);
+            return await task;
         }
 
         public static string GetResponse(string url)

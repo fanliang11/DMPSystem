@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DMPSystem.DataAccess.DMPConfig
+namespace DMPSystem.DataAccess.DMPHub
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class manager
+    public partial class Manager
     {
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public sbyte Sex { get; set; }
+        public bool Sex { get; set; }
         public System.DateTime CreateTime { get; set; }
         public System.DateTime UpdateTime { get; set; }
     }

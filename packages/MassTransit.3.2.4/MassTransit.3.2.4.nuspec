@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>MassTransit</id>
+    <version>3.2.4</version>
+    <title>MassTransit</title>
+    <authors>Chris Patterson, Dru Sellers, Travis Smith</authors>
+    <owners>Chris Patterson, Dru Sellers, Travis Smith</owners>
+    <licenseUrl>https://github.com/MassTransit/MassTransit/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/MassTransit/MassTransit</projectUrl>
+    <iconUrl>http://masstransit-project.com/wp-content/themes/pandora/slide.1.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MassTransit is a distributed application framework for .NET, including support for RabbitMQ and Azure Service Bus.</description>
+    <summary>MassTransit, a mesage-based distributed application framework</summary>
+    <tags>MassTransit</tags>
+    <dependencies>
+      <dependency id="NewId" version="2.1.3" />
+      <dependency id="Newtonsoft.Json" version="7.0.1" />
+    </dependencies>
+  </metadata>
+</package>

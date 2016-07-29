@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+  <Alias Key="Model" Value="DMPHubDb" />
+  <Alias Key="Target" Value="DMPHubDb.Store" />
+  <EntityContainerMapping CdmEntityContainer="DMPHubContext" StorageEntityContainer="DMPHubDbStoreContainer">
+    <EntitySetMapping Name="Manager">
+      <EntityTypeMapping TypeName="DMPHubDb.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

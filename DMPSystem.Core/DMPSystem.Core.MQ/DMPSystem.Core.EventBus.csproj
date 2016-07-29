@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D908B335-28FB-42C1-97EB-D0E6A061E139}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DMPSystem.Core.EventBus</RootNamespace>
+    <AssemblyName>DMPSystem.Core.EventBus</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Magnum">
+      <HintPath>..\..\packages\MassTransit\Magnum.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit, Version=2.7.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\新建文件夹 (13)\新建文件夹 (3)\packages\MassTransit.3.2.4\lib\net45\MassTransit.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.RabbitMqTransport">
+      <HintPath>..\..\..\..\..\新建文件夹 (13)\新建文件夹 (3)\packages\MassTransit.RabbitMQ.3.2.4\lib\net45\MassTransit.RabbitMqTransport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\packages\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\packages\EnterpriseLibrary\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="NewId">
+      <HintPath>..\..\packages\NewId.2.1.3\lib\net45\NewId.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\新建文件夹 (13)\新建文件夹 (3)\packages\RabbitMQ.Client.3.6.2\lib\net45\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="Configurations\QueueCollection.cs" />
+    <Compile Include="Configurations\QueuesCollection.cs" />
+    <Compile Include="Configurations\EventWrapperSection.cs" />
+    <Compile Include="Configurations\MapCollection.cs" />
+    <Compile Include="Configurations\ParameterElement.cs" />
+    <Compile Include="Configurations\PropertyElement.cs" />
+    <Compile Include="DependencyResolution\DependencyResolverExtensions.cs" />
+    <Compile Include="DependencyResolution\IDependencyResolver.cs" />
+    <Compile Include="DependencyResolution\ServiceResolver.cs" />
+    <Compile Include="EventContainer.cs" />
+    <Compile Include="EventModel\EntityChangeStatus.cs" />
+    <Compile Include="EventModel\EntityDeleted.cs" />
+    <Compile Include="EventModel\EntityGeted.cs" />
+    <Compile Include="EventModel\EntityInserted.cs" />
+    <Compile Include="EventModel\EntityReported.cs" />
+    <Compile Include="EventModel\EntityUpdated.cs" />
+    <Compile Include="EventResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="HashAlgorithms\ConsistentHash.cs" />
+    <Compile Include="HashAlgorithms\ConsistentHashNode.cs" />
+    <Compile Include="HashAlgorithms\HashAlgorithm.cs" />
+    <Compile Include="HashAlgorithms\IHashAlgorithm.cs" />
+    <Compile Include="ISubscriptionAdapt.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publisher\EventPublisher.cs" />
+    <Compile Include="Publisher\EventPublisherExtensions.cs" />
+    <Compile Include="Publisher\IEventPublisher.cs" />
+    <Compile Include="Rabbit\DefaultConsumeConfigurator.cs" />
+    <Compile Include="Rabbit\Event.cs" />
+    <Compile Include="Rabbit\IAfterConsumer.cs" />
+    <Compile Include="Rabbit\IBeforeConsumer.cs" />
+    <Compile Include="Rabbit\IConsumeConfigurator.cs" />
+    <Compile Include="Rabbit\RabbitMQHost.cs" />
+    <Compile Include="Rabbit\RabbitMqPublisher.cs" />
+    <Compile Include="Rabbit\RabbitMqSubscriptionAdapt.cs" />
+    <Compile Include="Subscription\IConsumer.cs" />
+    <Compile Include="Subscription\ISubscriptionService.cs" />
+    <Compile Include="Subscription\SubscriptionService.cs" />
+    <Compile Include="Utilities\Check.cs" />
+    <Compile Include="Utilities\DebugCheck.cs" />
+    <Compile Include="Utilities\EventTargetType.cs" />
+    <Compile Include="Utilities\IdentifyQueueAttribute.cs" />
+    <Compile Include="Utilities\QueueConsumerAttribute.cs" />
+    <Compile Include="Utilities\QueueContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EventResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EventResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

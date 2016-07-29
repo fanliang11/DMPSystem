@@ -108,6 +108,11 @@ namespace DMPSystem.Core.System.Intercept
                             //                   methodAttribute.CacheSectionType, keys);
                             break;
                         }
+                    case CacheTargetType.Redis:
+                    {
+                        RedisIntercept(methodAttribute.Method, invocation, key, methodAttribute.CacheSectionType, methodAttribute.Time);
+                        break;
+                    }
                 }
             }
             else
@@ -155,6 +160,44 @@ namespace DMPSystem.Core.System.Intercept
             }
         }
 
+        private void RedisIntercept(CachingMethod method, IInvocation invocation, string key, SectionType type, int time)
+        {
+            switch (method)
+            {
+                case CachingMethod.Get:
+                    {
+                        var list = default(object);
+                        var cacheObj = CacheContainer.GetInstances<ICacheProvider>(string.Format("{0}.{1}",type.ToString(),CacheTargetType.Redis.ToString()));
+                        var json = cacheObj.Get<string>(key);
+                        if (string.IsNullOrEmpty(json))
+                        {
+                            invocation.Proceed();
+                            list = invocation.ReturnValue;
+                            if (list != null)
+                            {
+                                json = JsonConvert.SerializeObject(list);
+                                cacheObj.Add(key, json, time);
+                            }
+                        }
+                        else
+                        {
+                            list = JsonConvert.DeserializeObject(json, invocation.Method.ReturnType);
+                        }
+                        invocation.ReturnValue = list;
+                        break;
+                    }
+                case CachingMethod.Put:
+                    {
+
+                        break;
+                    }
+                case CachingMethod.Remove:
+                    {
+
+                        break;
+                    }
+            }
+        }
         //#endregion
 
         //#region CouchBash缓存

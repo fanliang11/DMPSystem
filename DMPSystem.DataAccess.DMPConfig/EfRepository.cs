@@ -6,11 +6,9 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using DMPSystem.Core.System;
 
-namespace DMPSystem.DataAccess.DMPConfig
+namespace DMPSystem.DataAccess.DMPHub
 {
        class EfRepository<T> : IRepository<T> where T : class
     {

@@ -57,11 +57,11 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -72,9 +72,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\EnterpriseLibrary\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Common">
       <HintPath>..\..\packages\Redis\ServiceStack.Common.dll</HintPath>
     </Reference>
@@ -137,6 +138,10 @@
       <Project>{5d7fdd3d-6daf-4e95-a749-4b144e2ab678}</Project>
       <Name>DMPSystem.Core.Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\DMPSystem.Core\DMPSystem.Core.MQ\DMPSystem.Core.EventBus.csproj">
+      <Project>{d908b335-28fb-42c1-97eb-d0e6a061e139}</Project>
+      <Name>DMPSystem.Core.EventBus</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DMPSystem.Core\DMPSystem.Core.System\DMPSystem.Core.System.csproj">
       <Project>{0663f50a-8761-465e-bc0a-c500bb640218}</Project>
       <Name>DMPSystem.Core.System</Name>
@@ -144,6 +149,14 @@
     <ProjectReference Include="..\..\DMPSystem.DataAccess.DMPConfig\DMPSystem.DataAccess.DMPHub.csproj">
       <Project>{5335b826-ced2-45d1-91ba-c97f1c868105}</Project>
       <Name>DMPSystem.DataAccess.DMPHub</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DMPSystem.Events\DMPSystem.Events.Models\DMPSystem.Events.Models.csproj">
+      <Project>{d1aa6e9c-ab35-4e72-be88-4b99387919cc}</Project>
+      <Name>DMPSystem.Events.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DMPSystem.Events\DMPSystem.Events.PushEvent\DMPSystem.Events.PushEvent.csproj">
+      <Project>{33748f71-3aee-47d9-9891-cd7268602367}</Project>
+      <Name>DMPSystem.Events.PushEvent</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\DMPSystem.IModuleServices\DMPSystem.IModuleServices.DMPHub\DMPSystem.IModuleServices.DMPHub.csproj">
       <Project>{dee1b18e-3656-4cc4-9c81-fd8cb5336eaf}</Project>
@@ -163,6 +176,12 @@
     <Content Include="Configs\WCF.Behaviors.config" />
     <Content Include="Configs\WCF.Bindings.config" />
     <Content Include="Configs\WCF.Services.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\Cache.Bindings.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configs\Event.Bindings.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

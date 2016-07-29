@@ -1,0 +1,11 @@
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\bin\Release\DMPSystem.Core.Common.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\bin\Release\DMPSystem.Core.Common.pdb
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\bin\Release\AutoMapper.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\bin\Release\DMPSystem.Core.Logger.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\bin\Release\Newtonsoft.Json.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\bin\Release\log4net.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\bin\Release\DMPSystem.Core.Logger.pdb
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\bin\Release\AutoMapper.xml
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\obj\Release\DMPSystem.Core.Common.csprojResolveAssemblyReference.cache
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\obj\Release\DMPSystem.Core.Common.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\DMPSystem.Core.Common\obj\Release\DMPSystem.Core.Common.pdb

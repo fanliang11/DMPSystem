@@ -7,10 +7,12 @@ using DMPSystem.IModuleServices.DMPHub.Models;
 
 namespace DMPSystem.IModuleServices.DMPHub
 {
-  public  interface IManagerService
-  {
-      Manager GetManagerById(int id);
+    public interface IManagerService
+    {
+        Manager GetManagerById(int id);
 
-      List<Manager> GetManager();
-  }
+        List<Manager> GetManager();
+
+        bool Update(Manager manager);
+    }
 }

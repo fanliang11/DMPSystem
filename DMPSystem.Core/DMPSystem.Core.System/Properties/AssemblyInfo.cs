@@ -8,7 +8,7 @@ using DMPSystem.Core.System.Module;
 using DMPSystem.Core.System.Module.Attributes;
 
 [assembly: AssemblyTitle("DMPSystem.Core.System")]
-[assembly: AssemblyDescription("分布式管理平台")]
+[assembly: AssemblyDescription("数据中心平台")]
 [assembly: AssemblyModuleType(ModuleType.SystemModule, 10000)]
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("8202524d-2bc2-4164-9aa5-4407daed9dee")]
+[assembly: Guid("1202524d-2bc2-4164-9aa5-4407daed9dee")]

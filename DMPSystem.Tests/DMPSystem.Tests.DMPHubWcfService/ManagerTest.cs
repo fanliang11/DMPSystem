@@ -16,9 +16,9 @@ namespace DMPSystem.Tests.DMPHubWcfService
             var t = DateTime.Now;
             for (var i = 0; i < 1000; i++)
             {
-              var result=  HttpClientProvider.GetResponse("http://localhost:808/ManagerService/GetManagerById/2");
+                var result = HttpClientProvider.GetResponse("http://localhost:59572/ManagerService/GetManagerById/2");
             }
-            var t1=(DateTime.Now - t).TotalMilliseconds;
+            var t1 = (DateTime.Now - t).TotalMilliseconds;
         }
     }
 }

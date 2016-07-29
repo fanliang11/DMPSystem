@@ -4,40 +4,64 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DMPHubDb.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="manager">
+    <Schema Namespace="DMPHubDb.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DMPHub.dbo.Manager”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="Manager">
           <Key>
             <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Sex" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="UpdateTime" />
           </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Sex" Type="tinyint" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" Precision="0" Nullable="false" />
-          <Property Name="UpdateTime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DMPHubDbStoreContainer">
-          <EntitySet Name="manager" EntityType="Self.manager" Schema="dmphub" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Manager].[UserID] AS [UserID], 
+    [Manager].[UserName] AS [UserName], 
+    [Manager].[Email] AS [Email], 
+    [Manager].[Phone] AS [Phone], 
+    [Manager].[Sex] AS [Sex], 
+    [Manager].[CreateTime] AS [CreateTime], 
+    [Manager].[UpdateTime] AS [UpdateTime]
+    FROM [dbo].[Manager] AS [Manager]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DMPHubDb" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="DMPHubContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="manager" EntityType="DMPHubDb.manager" />
+          <EntitySet Name="Manager" EntityType="DMPHubDb.Manager" />
         </EntityContainer>
-        <EntityType Name="manager">
+        <EntityType Name="Manager">
           <Key>
             <PropertyRef Name="UserID" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Sex" />
+            <PropertyRef Name="CreateTime" />
+            <PropertyRef Name="UpdateTime" />
           </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Sex" Type="SByte" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -47,9 +71,9 @@
         <Alias Key="Model" Value="DMPHubDb" />
         <Alias Key="Target" Value="DMPHubDb.Store" />
         <EntityContainerMapping CdmEntityContainer="DMPHubContext" StorageEntityContainer="DMPHubDbStoreContainer">
-          <EntitySetMapping Name="manager">
-            <EntityTypeMapping TypeName="DMPHubDb.manager">
-              <MappingFragment StoreEntitySet="manager">
+          <EntitySetMapping Name="Manager">
+            <EntityTypeMapping TypeName="DMPHubDb.Manager">
+              <MappingFragment StoreEntitySet="Manager">
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />

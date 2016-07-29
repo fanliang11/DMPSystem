@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DMPSystem.DataAccess.DMPConfig
+namespace DMPSystem.DataAccess.DMPHub
 {
     using System;
     using System.Data.Entity;
@@ -25,6 +25,6 @@ namespace DMPSystem.DataAccess.DMPConfig
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<manager> manager { get; set; }
+        public virtual DbSet<Manager> Manager { get; set; }
     }
 }

@@ -1,4 +1,0 @@
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.MQ\bin\Debug\DMPSystem.Events.MQ.dll
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.MQ\bin\Debug\DMPSystem.Events.MQ.pdb
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.MQ\obj\Debug\DMPSystem.Events.MQ.dll
-D:\新建文件夹\开源1\DMPSystem\DMPSystem.Events\DMPSystem.Events.MQ\obj\Debug\DMPSystem.Events.MQ.pdb

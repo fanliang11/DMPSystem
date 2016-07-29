@@ -25,3 +25,5 @@ D:\新建文件夹\开源1\DMPSystem\DMPSystem.IModuleServices\DMPSystem.IModule
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.IModuleServices\DMPSystem.IModuleServices.DMPHub\obj\Debug\DMPSystem.IModuleServices.DMPHub.csprojResolveAssemblyReference.cache
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.IModuleServices\DMPSystem.IModuleServices.DMPHub\obj\Debug\DMPSystem.IModuleServices.DMPHub.dll
 D:\新建文件夹\开源1\DMPSystem\DMPSystem.IModuleServices\DMPSystem.IModuleServices.DMPHub\obj\Debug\DMPSystem.IModuleServices.DMPHub.pdb
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.IModuleServices\DMPSystem.IModuleServices.DMPHub\bin\Debug\Microsoft.Practices.Unity.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.IModuleServices\DMPSystem.IModuleServices.DMPHub\bin\Debug\Microsoft.Practices.Unity.Interception.dll
