@@ -26,8 +26,8 @@ EventContainer.GetInstances&lt;IEventPublisher&gt;(&quot;PushEvent&quot;).Publis
 rabbitmq publisher:</br>
  EventContainer.GetInstances&lt;IEventPublisher&gt;(&quot;DMPHubEvent.RabbitMq&quot;).Publish(new ChanageStateEvent() { UserID = manager.UserID });
  
-UseRateLimit 每分钟消息消费数限定在多少之内
-UseRetryNum 消息消费失败后重试次数，每次间隔1分钟
- 增加注册消费者模块注册的方法，这样就不需要依赖Autofac
+UseRateLimit 每分钟消息消费数限定在多少之内</br>
+UseRetryNum 消息消费失败后重试次数，每次间隔1分钟</br>
+增加注册消费者模块注册的方法，这样就不需要依赖Autofac</br>
  EventContainer.RegisterConsumeModule(params Type[] types)
  
