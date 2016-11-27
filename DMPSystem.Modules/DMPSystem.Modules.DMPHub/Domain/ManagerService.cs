@@ -22,8 +22,8 @@ namespace DMPSystem.Modules.DMPHub.Domain
 
         public ManagerService(ManagerRepository repository)
         {
-            _eventPublisher = EventContainer.GetInstances<IEventPublisher>("DMPHubEvent.RabbitMq");
-            _pushEventPublisher = EventContainer.GetInstances<IEventPublisher>("PushEvent");
+            _eventPublisher = EventContainer.GetInstance<IEventPublisher>("DMPHubEvent.RabbitMq");
+            _pushEventPublisher = EventContainer.GetInstance<IEventPublisher>("PushEvent");
             _repository = repository;
 
         }

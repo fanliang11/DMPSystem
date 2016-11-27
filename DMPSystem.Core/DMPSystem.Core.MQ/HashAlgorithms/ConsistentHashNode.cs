@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.SqlServer.Server;
 
 namespace DMPSystem.Core.EventBus.HashAlgorithms
 {
@@ -74,6 +75,10 @@ namespace DMPSystem.Core.EventBus.HashAlgorithms
             set;
         }
 
+        public string UseRateLimit
+        {
+            get; set;
+        }
 
         public string CunsumerNum
         {

@@ -59,9 +59,11 @@ namespace DMPSystem.Core.EventBus.Utilities
         /// </remarks>
         internal string _ruleName;
 
-       internal string _useRetryNum;
+       internal string _useRetryNum="5";
 
-       internal string _cunsumerNum;
+       internal string _useRateLimit="100";
+
+       internal string _cunsumerNum="1";
         /// <summary>
         /// 哈希节点容器
         /// </summary>
@@ -187,21 +189,18 @@ namespace DMPSystem.Core.EventBus.Utilities
                         Port = endpoints[1],
                         UserName = username,
                         Password = password,
-                        UseRetryNum = this._useRetryNum,
+                        UseRetryNum =this._useRetryNum,
                         CunsumerNum = this._cunsumerNum,
+                        UseRateLimit = this._useRateLimit,
                         MaxSize = this._maxSize,
                         MinSize = this._minSize,
                         QueueName = db.ToString(CultureInfo.InvariantCulture)
                     };
                     hash.Add(node);
                     dicHash.GetOrAdd(targetType.ToString(), hash);
-                   // ServiceResolver.Current.Register(node.Host,
-                     //   EventContainer.GetInstances<ISubscriptionAdapt>(dataContext.Key).PublishAt(node));
                 });
-                //EventContainer.GetInstances<ISubscriptionAdapt>(dataContext.Key).PublishAt(hash.GetNodes(),EventContainer.GetInstances<IConsumeConfigurator>(dataContext.Key));
             }
         }
-
         #endregion
     }
 }

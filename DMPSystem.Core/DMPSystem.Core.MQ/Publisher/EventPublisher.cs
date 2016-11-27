@@ -18,7 +18,7 @@ namespace DMPSystem.Core.EventBus.Publisher
 
         public EventPublisher()
         {
-            _subscriptionService = new Lazy<ISubscriptionService>(()=>EventContainer.GetInstances<ISubscriptionService>(EventTargetType.PushEvent.ToString()));
+            _subscriptionService = new Lazy<ISubscriptionService>(()=>EventContainer.GetInstance<ISubscriptionService>(EventTargetType.PushEvent.ToString()));
         }
 
         public void Publish<T>(T eventMessage) where T : Event

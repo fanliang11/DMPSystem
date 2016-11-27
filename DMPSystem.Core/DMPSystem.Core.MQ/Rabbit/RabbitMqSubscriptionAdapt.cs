@@ -22,7 +22,7 @@ namespace DMPSystem.Core.EventBus.Rabbit
 
         public RabbitMqSubscriptionAdapt(string appName)
         {
-            _context = new Lazy<QueueContext>(() => EventContainer.GetInstances<QueueContext>(appName));
+            _context = new Lazy<QueueContext>(() => EventContainer.GetInstance<QueueContext>(appName));
             _appName = appName;
         }
 
@@ -65,6 +65,7 @@ namespace DMPSystem.Core.EventBus.Rabbit
             foreach (var node in nodes)
             {
                 var busControl = ConfigureBus(node, new DefaultConsumeConfigurator(ServiceLocator.Current));
+                
                 busControl.Start();
             }
             //_reg.RegisterInstance(busControl).As<IBusControl>().SingleInstance();
@@ -81,7 +82,7 @@ namespace DMPSystem.Core.EventBus.Rabbit
         private List<Type> GetQueueConsumers(string queueName)
         {
             var result = new List<Type>();
-            var consumers = EnterpriseLibraryContainer.Current.GetAllInstances<Subscription.IConsumer>().ToList();
+            var consumers = EventContainer.GetInstances(typeof(Subscription.IConsumer));
             foreach (var consumer in consumers)
             {
                 var type = consumer.GetType();
@@ -102,24 +103,24 @@ namespace DMPSystem.Core.EventBus.Rabbit
 
         private IBusControl ConfigureBus(ConsistentHashNode phost, IConsumeConfigurator configurator = null)
         {
-            var endpoint = string.Format("rabbitmq://{0}/", phost.Host); ;
+            var endpoint = string.Format("rabbitmq://{0}/", phost.Host); 
             return Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
                 var host = cfg.Host(new Uri(endpoint), h =>
                 {
                     h.Username(phost.UserName);
                     h.Password(phost.Password);
-
                 });
-                
                 cfg.Durable = true;
+                cfg.UseRateLimit(int.Parse(phost.UseRateLimit), TimeSpan.FromSeconds(1));//每分钟消息消费数限定在1000之内
                 cfg.UseConcurrencyLimit(int.Parse(phost.CunsumerNum));
-                cfg.UseRetry(Retry.Immediate(5));
+                cfg.UseRetry(Retry.Interval(int.Parse(phost.UseRetryNum), TimeSpan.FromMinutes(1)));//消息消费失败后重试3次，每次间隔1分钟
                 if (configurator != null)
                 {
                     var consumers = GetQueueConsumers(phost.QueueName);
                     cfg.ReceiveEndpoint(host, phost.QueueName, eq => configurator.Configure(eq, consumers));
                 }
+
             });
         }
 

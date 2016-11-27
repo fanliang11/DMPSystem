@@ -86,6 +86,7 @@ namespace DMPSystem.Core.EventBus.DependencyResolution
         {
             object result;
             _initializers.TryGetValue(Tuple.Create(type, key ?? null), out result);
+            
             return result;
         }
 
@@ -101,6 +102,13 @@ namespace DMPSystem.Core.EventBus.DependencyResolution
         /// </remarks>
         public IEnumerable<object> GetServices(Type type, object key)
         {
+            var result = new List<object>();
+            if (key == null)
+            {
+                var keys = _initializers.Keys.Where(p => p.Item1 == type).Select(p=>p.Item2).ToList();
+                keys.ForEach(tuple =>result.Add( this.GetService(type, tuple)));
+                return result;
+            }
             return this.GetServiceAsServices(type, key);
         }
         #endregion

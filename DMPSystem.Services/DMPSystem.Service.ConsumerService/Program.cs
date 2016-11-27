@@ -34,7 +34,7 @@ namespace DMPSystem.Service.ConsumerService
 
             EnterpriseLibraryContainer.Current = new AutofacServiceLocator(container);
             builder.InitializeModule();
-            EventContainer.GetInstances<ISubscriptionAdapt>("DMPHubEvent.RabbitMq").SubscribeAt();
+            EventContainer.GetInstance<ISubscriptionAdapt>("DMPHubEvent.RabbitMq").SubscribeAt();
             new Service1().Debug();
         }
     }

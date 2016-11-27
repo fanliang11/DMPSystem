@@ -24,6 +24,8 @@ namespace DMPSystem.Core.EventBus.Rabbit
         /// 通过那台
         /// </summary>
         string FromApplication { get; }
+
+        bool  Ack { get; set; }
     }
 
     public abstract class Event : IEvent
@@ -45,6 +47,9 @@ namespace DMPSystem.Core.EventBus.Rabbit
 
         public DateTime CreateTime { get; private set; }
 
+        public DateTime? UpdateTime { get; set; }
+
+        public bool Ack { get; set; }
 
         public string Machine { get; private set; }
 

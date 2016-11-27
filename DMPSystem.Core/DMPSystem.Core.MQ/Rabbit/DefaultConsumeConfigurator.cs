@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using DMPSystem.Core.EventBus.Subscription;
 using Magnum.Reflection;
@@ -77,12 +79,11 @@ namespace DMPSystem.Core.EventBus.Rabbit
                     }
                 }
             }
-
         }
 
         protected void ConsumerTo<TEvent, TConsumer>(IRabbitMqReceiveEndpointConfigurator cfg, Type handlerType)
             where TConsumer : Subscription.IConsumer<TEvent>
-            where TEvent : class
+            where TEvent : class 
         {
             cfg.Handler<TEvent>(async evnt =>
             {
@@ -90,22 +91,20 @@ namespace DMPSystem.Core.EventBus.Rabbit
                 {
                     await Task.Run(() =>
                     {
+                        var source = new TaskCompletionSource<TEvent>();
                         if (_beforeConsumer != null)
                             _beforeConsumer.Excuete(evnt.Message);
-                        EnterpriseLibraryContainer.Current
-                            .GetInstance<Subscription.IConsumer<TEvent>>()
-                            .HandleEvent(evnt.Message);
+                        MethodInfo method = handlerType.GetMethod("HandleEvent", new Type[] { evnt.Message.GetType()});
+                        method.Invoke(Activator.CreateInstance(handlerType, new object[] { }), new object[] { evnt.Message });
                         if (_afterConsumer != null)
                             _afterConsumer.Excuete(evnt.Message);
-                        return evnt.CompleteTask;
-
+                              return Task.FromResult(true);
                     });
                 }
                 catch (Exception ex)
                 {
-
+                    throw ex;
                 }
-
             });
         }
     }

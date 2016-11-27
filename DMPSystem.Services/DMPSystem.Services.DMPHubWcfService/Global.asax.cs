@@ -32,7 +32,7 @@ namespace DMPSystem.Services.DMPHubWcfService
             var container = builder.Build();
             EnterpriseLibraryContainer.Current = new AutofacServiceLocator(container);
             builder.InitializeModule();
-            EventContainer.GetInstances<ISubscriptionAdapt>("DMPHubEvent.RabbitMq").PublishAt();
+            EventContainer.GetInstance<ISubscriptionAdapt>("DMPHubEvent.RabbitMq").PublishAt();
             var first = (from p in builder.GetReferenceAssembly()
                          where p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.WcfService
                          select p.GetTypes().Where(t => !t.IsInterface && t.Name.EndsWith("Service"))).FirstOrDefault(

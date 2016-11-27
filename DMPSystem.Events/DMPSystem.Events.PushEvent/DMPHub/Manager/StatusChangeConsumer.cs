@@ -39,7 +39,7 @@ namespace DMPSystem.Events.PushEvent.DMPHub.Manager
                 }
                 catch (Exception)
                 {
-                    EventContainer.GetInstances<IEventPublisher>("PushEvent").Publish(eventMessage);
+                    EventContainer.GetInstance<IEventPublisher>("PushEvent").Publish(eventMessage);
                 }
             }
         }

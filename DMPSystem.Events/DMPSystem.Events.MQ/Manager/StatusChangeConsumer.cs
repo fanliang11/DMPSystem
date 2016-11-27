@@ -32,7 +32,7 @@ namespace DMPSystem.Events.MQ.Manager
                 catch (Exception)
                 {
 
-                    EventContainer.GetInstances<IEventPublisher>("DMPHubEvent.RabbitMq").Publish(eventMessage);
+                    
                 }
             }
         }

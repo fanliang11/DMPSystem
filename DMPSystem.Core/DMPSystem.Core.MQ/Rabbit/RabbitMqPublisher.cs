@@ -20,7 +20,7 @@ namespace DMPSystem.Core.EventBus.Rabbit
 
         public RabbitMqPublisher(string appName)
         {
-            _context = new Lazy<QueueContext>(() => EventContainer.GetInstances<QueueContext>(appName));
+            _context = new Lazy<QueueContext>(() => EventContainer.GetInstance<QueueContext>(appName));
             _appName = appName;
         }
 
@@ -32,7 +32,7 @@ namespace DMPSystem.Core.EventBus.Rabbit
         public void Publish<T>(T eventMessage) where T : Event
         {
             var node= GetRedisNode(eventMessage.Id.ToString());
-             var bus = EventContainer.GetInstances<IBusControl>(string.Format("{0}.{1}",_appName,node.Host));
+             var bus = EventContainer.GetInstance<IBusControl>(string.Format("{0}.{1}",_appName,node.Host));
              bus.Publish(eventMessage);
         }
 

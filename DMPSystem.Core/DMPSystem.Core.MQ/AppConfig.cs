@@ -10,6 +10,7 @@ using DMPSystem.Core.EventBus.Configurations;
 using DMPSystem.Core.EventBus.DependencyResolution;
 using DMPSystem.Core.EventBus.HashAlgorithms;
 using DMPSystem.Core.EventBus.Utilities;
+using MassTransit.Internals.Extensions;
 using Sys=System;
 
 namespace DMPSystem.Core.EventBus
@@ -76,6 +77,12 @@ namespace DMPSystem.Core.EventBus
         public T GetContextInstance<T>() where T : class
         {
             var context = ServiceResolver.Current.GetService<T>(typeof(T));
+            return context;
+        }
+
+        public IEnumerable<object> GetContextInstances(Type type)
+        {
+            var context = ServiceResolver.Current.GetServices(type);
             return context;
         }
 
@@ -162,6 +169,12 @@ namespace DMPSystem.Core.EventBus
             {
                 throw e;
             }
+        }
+
+        public void RegisterConsumeModule(Type type)
+        {
+            ServiceResolver.Current.Register(string.Format("{0}", type.GetTypeName()),
+                                Activator.CreateInstance(type, new object[] { }));
         }
 
         private void InitSettingMethod()

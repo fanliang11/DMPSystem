@@ -32,7 +32,7 @@ namespace DMPSystem.Service.ConsumerService
         protected override void OnStop()
         {
             
-            var publisher = EventContainer.GetInstances<IEventPublisher>("DMPHubEvent.RabbitMq");
+            var publisher = EventContainer.GetInstance<IEventPublisher>("DMPHubEvent.RabbitMq");
             if (publisher != null)
             {
                  

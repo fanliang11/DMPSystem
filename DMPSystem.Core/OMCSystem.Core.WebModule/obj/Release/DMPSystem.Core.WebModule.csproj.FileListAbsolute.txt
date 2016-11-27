@@ -1,0 +1,7 @@
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\OMCSystem.Core.WebModule\bin\Release\DMPSystem.Core.WebModule.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\OMCSystem.Core.WebModule\bin\Release\DMPSystem.Core.WebModule.pdb
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\OMCSystem.Core.WebModule\bin\Release\Newtonsoft.Json.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\OMCSystem.Core.WebModule\bin\Release\Newtonsoft.Json.xml
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\OMCSystem.Core.WebModule\obj\Release\DMPSystem.Core.WebModule.csprojResolveAssemblyReference.cache
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\OMCSystem.Core.WebModule\obj\Release\DMPSystem.Core.WebModule.dll
+D:\新建文件夹\开源1\DMPSystem\DMPSystem.Core\OMCSystem.Core.WebModule\obj\Release\DMPSystem.Core.WebModule.pdb

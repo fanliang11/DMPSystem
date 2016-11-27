@@ -1,0 +1,966 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MassTransit.RabbitMqTransport</name>
+    </assembly>
+    <members>
+        <member name="M:MassTransit.RabbitMqTransport.Configuration.Builders.IRabbitMqReceiveEndpointBuilder.AddExchangeBindings(MassTransit.RabbitMqTransport.Topology.ExchangeBindingSettings[])">
+            <summary>
+            Add an explicit exchange binding (or bindings) to the receive endpoint
+            </summary>
+            <param name="bindings"></param>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator">
+            <summary>
+            Configures SSL/TLS for RabbitMQ. See http://www.rabbitmq.com/ssl.html
+            for details on how to set up RabbitMQ for SSL.
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator.CertificatePath">
+            <summary>
+            The path to a file containing a certificate to use for client authentication, not required if <see cref="P:MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator.Certificate"/> is populated
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator.CertificatePassphrase">
+            <summary>
+            The password for the certificate file at <see cref="P:MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator.CertificatePath"/>
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator.Certificate">
+            <summary>
+            A certficate instance to use for client authentication, if provided then <see cref="P:MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator.CertificatePath"/> and <see cref="P:MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator.CertificatePassphrase"/> are not required
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Configuration.IExchangeBindingConfigurator">
+            <summary>
+            The binding configuration
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.IExchangeBindingConfigurator.RoutingKey">
+            <summary>
+            Sets the routing key for the binding
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Configuration.IExchangeConfigurator">
+            <summary>
+            Configures an exchange for RabbitMQ
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.IExchangeConfigurator.Durable">
+            <summary>
+            Specify the queue should be durable (survives broker restart) or in-memory
+            </summary>
+            <value>True for a durable queue, False for an in-memory queue</value>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.IExchangeConfigurator.AutoDelete">
+            <summary>
+            Specify that the queue (and the exchange of the same name) should be created as auto-delete
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.IExchangeConfigurator.ExchangeType">
+            <summary>
+            Specify the exchange type for the endpoint
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Configuration.IExchangeConfigurator.SetExchangeArgument(System.String,System.Object)">
+            <summary>
+            Set an exchange argument passed to the broker on queue declaration
+            </summary>
+            <param name="key">The argument key</param>
+            <param name="value">The argument value</param>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Configuration.IQueueConfigurator">
+            <summary>
+            Configures a queue/exchange pair in RabbitMQ
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.IQueueConfigurator.PrefetchCount">
+            <summary>
+            Specify the maximum number of concurrent messages that are consumed
+            </summary>
+            <value>The limit</value>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.IQueueConfigurator.Exclusive">
+            <summary>
+            Specify that the queue is exclusive to this process and cannot be accessed by other processes
+            at the same time.
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.IQueueConfigurator.PurgeOnStartup">
+            <summary>
+            Purge the messages from an existing queue on startup (note that upon reconnection to the server
+            the queue will not be purged again, only when the service is restarted).
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Configuration.IQueueConfigurator.Lazy">
+            <summary>
+            Sets the queue to be lazy (using less memory)
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Configuration.IQueueConfigurator.SetQueueArgument(System.String,System.Object)">
+            <summary>
+            Set a queue argument passed to the broker on queue declaration
+            </summary>
+            <param name="key">The argument key</param>
+            <param name="value">The argument value</param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Configuration.IQueueConfigurator.EnablePriority(System.Byte)">
+            <summary>
+            Enable the message priority for the queue, specifying the maximum priority available
+            </summary>
+            <param name="maxPriority"></param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Configuration.IRabbitMqHostConfigurator.UseSsl(System.Action{MassTransit.RabbitMqTransport.Configuration.Configurators.IRabbitMqSslConfigurator})">
+            <summary>
+            Configure the use of SSL to connection to RabbitMQ
+            </summary>
+            <param name="configureSsl"></param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Configuration.IRabbitMqHostConfigurator.Heartbeat(System.UInt16)">
+            <summary>
+            Specifies the heartbeat interval, in seconds, used to maintain the connection to RabbitMQ.
+            Setting this value to zero will disable heartbeats, allowing the connection to timeout
+            after an inactivity period.
+            </summary>
+            <param name="requestedHeartbeat"></param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Configuration.IRabbitMqHostConfigurator.Username(System.String)">
+            <summary>
+            Sets the username for the connection to RabbitMQ
+            </summary>
+            <param name="username"></param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Configuration.IRabbitMqHostConfigurator.Password(System.String)">
+            <summary>
+            Sets the password for the connection to RabbitMQ
+            </summary>
+            <param name="password"></param>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Contexts.DelayedExchangeMessageRedeliveryContext`1">
+            <summary>
+            Context for delaying message redelivery using a delayed RabbitMQ exchange. Requires the plug-in
+            https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Contracts.PrefetchCountUpdated">
+            <summary>
+            Published/Returned when the prefetch count of a receive endpoint is updated
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Contracts.PrefetchCountUpdated.Timestamp">
+            <summary>
+            The time the prefetch count was updated
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Contracts.PrefetchCountUpdated.QueueName">
+            <summary>
+            The name of the queue that was updated
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Contracts.PrefetchCountUpdated.PrefetchCount">
+            <summary>
+            The new prefetch count of the receive endpoint
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Contracts.SetPrefetchCount">
+            <summary>
+            Set the prefetch count of a receive endpoint
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Contracts.SetPrefetchCount.Timestamp">
+            <summary>
+            The time at which the change was requested
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Contracts.SetPrefetchCount.QueueName">
+            <summary>
+            An optional queue name that if specified limits the setting to the queue name specified
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Contracts.SetPrefetchCount.PrefetchCount">
+            <summary>
+            The new prefetch count for the receive endpoint
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.MessageNotConfirmedException">
+            <summary>
+            Published when a RabbitMQ channel is closed and the message was not confirmed by the broker.
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.PublishNackException">
+            <summary>
+            Thrown when a message is nack'd by the broker
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Hosting.RabbitMqServiceConfigurator">
+            <summary>
+            A hosted service can specify receive endpoints using the service configurator
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Hosting.RabbitMqSettings.Username">
+            <summary>
+            The Username for connecting to the host
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Hosting.RabbitMqSettings.Password">
+            <summary>
+            The password for connection to the host
+            MAYBE this should be a SecureString instead of a regular string
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Hosting.RabbitMqSettings.Heartbeat">
+            <summary>
+            The heartbeat interval (in seconds) to keep the host connection alive
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Hosting.RabbitMqSettings.Host">
+            <summary>
+            The RabbitMQ host to connect to (should be a valid hostname)
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Hosting.RabbitMqSettings.Port">
+            <summary>
+            The RabbitMQ port to connect
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Hosting.RabbitMqSettings.VirtualHost">
+            <summary>
+            The virtual host for the connection
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Integration.IConnectionCache">
+            <summary>
+            Attaches a connection context to the value (shared, of course)
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Integration.IModelCache">
+            <summary>
+            Attaches a model context to the value
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Integration.IModelCache.Close">
+            <summary>
+            Close the model cache, disposing of any resources
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Integration.PendingPublish">
+            <summary>
+            A pending BasicPublish to RabbitMQ, waiting for an ACK/NAK from the broker
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Integration.RabbitMqModelCache">
+            <summary>
+            Caches the models for sending that have already been created, so that the model 
+            is retained and configured using an existing connection
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.IRabbitMqHost.ConnectionRetryPolicy">
+            <summary>
+            The connection retry policy used for connecting to the host
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.IRabbitMqHost.Supervisor">
+            <summary>
+            The supervisor for the host, which indicates when it's being stopped
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ModelSettings.PublisherConfirmation">
+            <summary>
+            If true, publisher confirmation is enabled on the channel
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Pipeline.DelayedExchangeMessageRedeliveryFilter`1">
+            <summary>
+            Uses a delayed exchange in RabbitMQ to delay a message retry
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Pipeline.RabbitMqConsumerFilter">
+            <summary>
+            A filter that uses the model context to create a basic consumer and connect it to the model
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Pipeline.PrepareSendExchangeFilter">
+            <summary>
+            Prepares a queue for receiving messages using the ReceiveSettings specified.
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Pipeline.RabbitMqBasicConsumer">
+            <summary>
+            Receives messages from RabbitMQ, pushing them to the InboundPipe of the service endpoint.
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Pipeline.RabbitMqBasicConsumer.#ctor(MassTransit.RabbitMqTransport.ModelContext,System.Uri,MassTransit.Pipeline.IPipe{MassTransit.ReceiveContext},MassTransit.IReceiveObserver,MassTransit.Util.ITaskScope)">
+            <summary>
+            The basic consumer receives messages pushed from the broker.
+            </summary>
+            <param name="model">The model context for the consumer</param>
+            <param name="inputAddress">The input address for messages received by the consumer</param>
+            <param name="receivePipe">The receive pipe to dispatch messages</param>
+            <param name="receiveObserver">The observer for receive events</param>
+            <param name="taskSupervisor">The token used to cancel/stop the consumer at shutdown</param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Pipeline.RabbitMqBasicConsumer.RabbitMQ#Client#IBasicConsumer#HandleBasicConsumeOk(System.String)">
+            <summary>
+            Called when the consumer is ready to be delivered messages by the broker
+            </summary>
+            <param name="consumerTag"></param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Pipeline.RabbitMqBasicConsumer.RabbitMQ#Client#IBasicConsumer#HandleBasicCancelOk(System.String)">
+            <summary>
+            Called when the broker has received and acknowledged the BasicCancel, indicating
+            that the consumer is requesting to be shut down gracefully.
+            </summary>
+            <param name="consumerTag">The consumerTag that was shut down.</param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Pipeline.RabbitMqBasicConsumer.RabbitMQ#Client#IBasicConsumer#HandleBasicCancel(System.String)">
+            <summary>
+            Called when the broker cancels the consumer due to an unexpected event, such as a
+            queue removal, or other change, that would disconnect the consumer.
+            </summary>
+            <param name="consumerTag">The consumerTag that is being cancelled.</param>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Pipeline.ReceiveModelFilter">
+            <summary>
+            Creates a receiving model context using the connection
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Pipeline.PrepareReceiveQueueFilter">
+            <summary>
+            Prepares a queue for receiving messages using the ReceiveSettings specified.
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.PublishSettings">
+            <summary>
+            Publishing is a special case of send, but with additional attributes
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.PublishSettings.Mandatory">
+            <summary>
+            True if messages published to an exchange must be received by at least one queue
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.RabbitMqBusFactory.Create(System.Action{MassTransit.IRabbitMqBusFactoryConfigurator})">
+            <summary>
+            Configure and create a bus for RabbitMQ
+            </summary>
+            <param name="configure">The configuration callback to configure the bus</param>
+            <returns></returns>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.RabbitMqAddressExtensions.GetHostUriBuilder(MassTransit.RabbitMqTransport.RabbitMqHostSettings,System.String)">
+            <summary>
+            Returns a UriBuilder for the host and entity specified
+            </summary>
+            <param name="hostSettings">The host settings</param>
+            <param name="entityName">The entity name (queue/exchange)</param>
+            <returns>A UriBuilder</returns>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.RabbitMqAddressExtensions.GetSendAddress(MassTransit.RabbitMqTransport.IRabbitMqHost,System.String,System.Action{MassTransit.RabbitMqTransport.Configuration.IExchangeConfigurator})">
+            <summary>
+            Return a send address for the exchange
+            </summary>
+            <param name="host">The RabbitMQ host</param>
+            <param name="exchangeName">The exchange name</param>
+            <param name="configure">An optional configuration for the exchange to set type, durable, etc.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.RabbitMqAddressExtensions.GetSendSettings(System.Uri)">
+            <summary>
+            Return the send settings for the address
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.RabbitMqBasicConsumeContext">
+            <summary>
+                Contains the context of the BasicConsume call received by the BasicConsumer
+                bound to the inbound RabbitMQ model
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqBasicConsumeContext.Exchange">
+            <summary>
+                The exchange to which to the message was sent
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqBasicConsumeContext.RoutingKey">
+            <summary>
+                The routing key specified
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqBasicConsumeContext.ConsumerTag">
+            <summary>
+                The consumer tag of the receiving consumer
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqBasicConsumeContext.DeliveryTag">
+            <summary>
+                The delivery tag of the message to the consumer
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqBasicConsumeContext.Properties">
+            <summary>
+                The basic properties of the message
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqConsumerMetrics.ConsumerTag">
+            <summary>
+            The consumer tag that was assigned to the consumer by the broker
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqConsumerMetrics.DeliveryCount">
+            <summary>
+            The number of messages consumed by the consumer
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqConsumerMetrics.ConcurrentDeliveryCount">
+            <summary>
+            The highest concurrent message count that was received by the consumer
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.RabbitMqHostSettings">
+            <summary>
+            Settings to configure a RabbitMQ host explicitly without requiring the fluent interface
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.Host">
+            <summary>
+                The RabbitMQ host to connect to (should be a valid hostname)
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.Port">
+            <summary>
+                The RabbitMQ port to connect
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.VirtualHost">
+            <summary>
+                The virtual host for the connection
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.Username">
+            <summary>
+                The Username for connecting to the host
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.Password">
+            <summary>
+                The password for connection to the host
+                MAYBE this should be a SecureString instead of a regular string
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.Heartbeat">
+            <summary>
+                The heartbeat interval (in seconds) to keep the host connection alive
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.Ssl">
+            <summary>
+            True if SSL is required
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.SslProtocol">
+            <summary>
+            SSL protocol, Tls11 or Tls12 are recommended
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.SslServerName">
+            <summary>
+            The server name specified on the certificate for the RabbitMQ server
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.AcceptablePolicyErrors">
+            <summary>
+            The acceptable policy errors for the SSL connection
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.ClientCertificatePath">
+            <summary>
+            The path to the client certificate if client certificate authentication is used
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.ClientCertificatePassphrase">
+            <summary>
+            The passphrase for the client certificate found using the <see cref="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.ClientCertificatePath"/>, not required if <see cref="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.ClientCertificate"/> is populated
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.ClientCertificate">
+            <summary>
+            A certificate to use for client certificate authentication, if not set then the <see cref="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.ClientCertificatePath"/> and <see cref="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.ClientCertificatePassphrase"/> will be used
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqHostSettings.UseClientCertificateAsAuthenticationIdentity">
+            <summary>
+            Whether the client certificate should be used for logging in to RabbitMQ, ignoring any username and password set
+            </summary>
+            <remarks>
+            RabbitMQ must be configured correctly for this to work, including enabling the rabbitmq_auth_mechanism_ssl plugin
+            </remarks>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.ConnectionContext">
+            <summary>
+            A RabbitMQ connection
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ConnectionContext.Connection">
+            <summary>
+            The RabbitMQ Connection
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ConnectionContext.HostSettings">
+            <summary>
+            The host settings for the connection
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.ConnectionContext.CreateModel">
+            <summary>
+            Create a model on the connection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.RabbitMqExtensions.Cleanup(RabbitMQ.Client.IModel,System.UInt16,System.String)">
+            <summary>
+            Close and dispose of a RabbitMQ channel without throwing any exceptions
+            </summary>
+            <param name="model">The channel (can be null)</param>
+            <param name="replyCode"></param>
+            <param name="message">Message for channel closure</param>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.RabbitMqExtensions.Cleanup(RabbitMQ.Client.IConnection,System.UInt16,System.String)">
+            <summary>
+            Close and dispose of a RabbitMQ connection without throwing any exceptions
+            </summary>
+            <param name="connection">The channel (can be null)</param>
+            <param name="replyCode"></param>
+            <param name="message">Message for channel closure</param>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.ModelContext">
+            <summary>
+            With a connect, and a model from RabbitMQ, this context is passed forward to allow
+            the model to be configured and connected
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ModelContext.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ModelContext.ConnectionContext">
+            <summary>
+            The connection context on which the model was created
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.ModelContext.BasicPublishAsync(System.String,System.String,System.Boolean,RabbitMQ.Client.IBasicProperties,System.Byte[],System.Boolean)">
+            <summary>
+            Publish a message to the broker, asynchronously
+            </summary>
+            <param name="exchange">The destination exchange</param>
+            <param name="routingKey">The exchange routing key</param>
+            <param name="mandatory">true if the message must be delivered</param>
+            <param name="basicProperties">The message properties</param>
+            <param name="body">The message body</param>
+            <param name="awaitAck"></param>
+            <returns>An awaitable Task that is completed when the message is acknowledged by the broker</returns>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.ReceiveSettings">
+            <summary>
+            Specify the receive settings for a receive transport
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.QueueName">
+            <summary>
+            The queue name to receive from
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.ExchangeName">
+            <summary>
+            The exchange name to bind to the queue as the default exchange
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.PrefetchCount">
+            <summary>
+            The number of unacknowledged messages to allow to be processed concurrently
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.Durable">
+            <summary>
+            True if messages should be persisted to disk for the queue
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.Exclusive">
+            <summary>
+            True if the queue receive should be exclusive and not shared
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.AutoDelete">
+            <summary>
+            True if the queue/exchange should automatically be deleted
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.QueueArguments">
+            <summary>
+            Arguments passed to QueueDeclare
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.ExchangeArguments">
+            <summary>
+            Arguments passed to exchange-declare
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.PurgeOnStartup">
+            <summary>
+            If True, and a queue name is specified, if the queue exists and has messages, they are purged at startup
+            If the connection is reset, messages are not purged until the service is reset
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.ReceiveSettings.ExchangeType">
+            <summary>
+            The RabbitMQ exchange type
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.RabbitMqReceiveTransport.Start(MassTransit.Pipeline.IPipe{MassTransit.ReceiveContext})">
+            <summary>
+            Start the receive transport, returning a Task that can be awaited to signal the transport has 
+            completely shutdown once the cancellation token is cancelled.
+            </summary>
+            <param name="receivePipe"></param>
+            <returns>A task that is completed once the transport is shut down</returns>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqSendContext.Mandatory">
+            <summary>
+                Specify that the published message must be delivered to a queue or it will be returned
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqSendContext.Exchange">
+            <summary>
+            The destination exchange for the message
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqSendContext.RoutingKey">
+            <summary>
+            The routing key for the message (defaults to "")
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqSendContext.AwaitAck">
+            <summary>
+            True if the ack from the broker should be awaited, otherwise only the BasicPublish call is awaited
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.RabbitMqSendContext.BasicProperties">
+            <summary>
+            The basic properties for the RabbitMQ message
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.SendSettings.ExchangeName">
+            <summary>
+            The exchange name to bind to the queue as the default exchange
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.SendSettings.Durable">
+            <summary>
+            True if messages should be persisted to disk for the queue
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.SendSettings.AutoDelete">
+            <summary>
+            True if the queue/exchange should automatically be deleted
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.SendSettings.ExchangeArguments">
+            <summary>
+            Arguments passed to exchange-declare
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.SendSettings.ExchangeType">
+            <summary>
+            The RabbitMQ exchange type
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.SendSettings.BindToQueue">
+            <summary>
+            True if the exchange should be bound to a queue on send (for error queues, etc.)
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.SendSettings.QueueName">
+            <summary>
+            The queue to create/bind to the exchange
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.SendSettings.QueueArguments">
+            <summary>
+            Arguments passed to QueueDeclare
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Testing.BusTestScenarioExtensions">
+            <summary>
+            Extensions for configuring a test RabbitMQ instance that can be used
+            in the test. See <see cref="T:MassTransit.RabbitMqTransport.Testing.RabbitMqBusTestScenarioBuilder"/> docs.
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqTransport.Testing.BusTestScenarioExtensions.UseRabbitMqBusScenario(MassTransit.Testing.TestInstanceConfigurators.ITestConfigurator{MassTransit.Testing.IBusTestScenario})">
+             <summary>
+             Extensions for configuring a test RabbitMQ instance that can be used
+             in the test. See <see cref="T:MassTransit.RabbitMqTransport.Testing.RabbitMqBusTestScenarioBuilder"/> docs.
+             
+             Sample usage:
+             <code>
+            using Magnum.TestFramework;
+            using MassTransit.Testing;
+            [Scenario]
+            public class Using_the_handler_test_factory
+            {
+                IHandlerTest&lt;A&gt; _test;
+            
+                [When]
+                public void Setup()
+                {
+                    _test = TestFactory.ForHandler&lt;A&gt;()
+                        .New(x =>
+                            {
+                                x.UseRabbitMqBusScenario();
+                                x.Send(new A());
+                                x.Send(new B());
+                            });
+                    _test.Execute();
+                }
+                [Finally]
+                public void Teardown()
+                {
+                    _test.Dispose();
+                    _test = null;
+                }
+                [Then]
+                public void Should_have_received_a_message_of_type_a()
+                {
+                    _test.Received.Select&lt;A&gt;().ShouldBeTrue();
+                }
+            }
+            </code>
+             </summary>
+             <param name="configurator">The configurator that is passed via the lambda that you are calling this method from.</param>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Testing.RabbitMqBusTestScenarioBuilder">
+            <summary>
+            A RabbitMQ bus scenario builder. Will consume off
+            'rabbitmq://localhost/mt_client', and use RabbitMQ routing. Timeout = 100 ms.
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Topology.ExchangeBindingSettings">
+            <summary>
+            Settings for a subscription to be bound into the RabbitMQ exchanges
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Topology.ExchangeBindingSettings.Exchange">
+            <summary>
+            The exchange settings
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Topology.ExchangeBindingSettings.RoutingKey">
+            <summary>
+            A routing key for the exchange binding
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Topology.ExchangeBindingSettings.Arguments">
+            <summary>
+            The arguments for the binding
+            </summary>
+        </member>
+        <member name="T:MassTransit.RabbitMqTransport.Topology.ExchangeSettings">
+            <summary>
+            The details of an exchange to be bound
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Topology.ExchangeSettings.ExchangeName">
+            <summary>
+            The name of the exchange
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Topology.ExchangeSettings.ExchangeType">
+            <summary>
+            The exchange type (fanout,etc.)
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Topology.ExchangeSettings.Durable">
+            <summary>
+            True if the exchange should be durable, and survive a broker restart
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Topology.ExchangeSettings.AutoDelete">
+            <summary>
+            True if the exchange should be deleted when the connection is closed
+            </summary>
+        </member>
+        <member name="P:MassTransit.RabbitMqTransport.Topology.ExchangeSettings.Arguments">
+            <summary>
+            Additional exchange arguments
+            </summary>
+        </member>
+        <member name="M:MassTransit.ConsumerPipeConfiguratorExtensions.RabbitMqConsumer(MassTransit.IPipeConfigurator{MassTransit.RabbitMqTransport.ConnectionContext},MassTransit.Pipeline.IPipe{MassTransit.ReceiveContext},MassTransit.RabbitMqTransport.ReceiveSettings,MassTransit.IReceiveObserver,MassTransit.IReceiveEndpointObserver,System.Collections.Generic.IEnumerable{MassTransit.RabbitMqTransport.Topology.ExchangeBindingSettings},MassTransit.Util.ITaskSupervisor,MassTransit.Util.Mediator{MassTransit.RabbitMqTransport.Management.ISetPrefetchCount})">
+            <summary>
+            Adds a RabbitMQ Basic Consumer to the pipeline
+            </summary>
+            <param name="configurator"></param>
+            <param name="pipe"></param>
+            <param name="settings"></param>
+            <param name="receiveObserver"></param>
+            <param name="endpointObserver"></param>
+            <param name="exchangeBindings"></param>
+            <param name="supervisor"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:MassTransit.DeferExtensions.Defer``1(MassTransit.ConsumeContext{``0},System.TimeSpan)">
+            <summary>
+            Defers the message for redelivery using a delayed exchange (an experimental RabbitMQ plug-in).
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="context"></param>
+            <param name="delay"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MassTransit.DelayedExchangeRetryExtensions.UseDelayedRedelivery``1(MassTransit.IPipeConfigurator{MassTransit.ConsumeContext{``0}},MassTransit.IRetryPolicy)">
+            <summary>
+            Use the message scheduler to schedule redelivery of messages based on the retry policy.
+            </summary>
+            <param name="configurator"></param>
+            <param name="retryPolicy"></param>
+        </member>
+        <member name="T:MassTransit.IRabbitMqReceiveEndpointConfigurator">
+            <summary>
+            Configure a receiving RabbitMQ endpoint
+            </summary>
+        </member>
+        <member name="M:MassTransit.IRabbitMqReceiveEndpointConfigurator.Bind(System.String)">
+            <summary>
+            Bind an existing exchange to the receive endpoint queue by name
+            </summary>
+            <param name="exchangeName">The exchange name</param>
+        </member>
+        <member name="M:MassTransit.IRabbitMqReceiveEndpointConfigurator.Bind(System.String,System.Action{MassTransit.RabbitMqTransport.Configuration.IExchangeBindingConfigurator})">
+            <summary>
+            Bind an exchange to the receive endpoint exchange
+            </summary>
+            <param name="exchangeName">The exchange name</param>
+            <param name="callback">Configure the exchange and binding</param>
+        </member>
+        <member name="P:MassTransit.IRabbitMqReceiveEndpointConfigurator.BindMessageExchanges">
+            <summary>
+            If true, binds the message type exchanges to the queue exchange
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqHostConfigurationExtensions.Host(MassTransit.IRabbitMqBusFactoryConfigurator,System.Uri,System.Action{MassTransit.RabbitMqTransport.Configuration.IRabbitMqHostConfigurator})">
+            <summary>
+                Configure a RabbitMQ host using the configuration API
+            </summary>
+            <param name="configurator"></param>
+            <param name="hostAddress">The URI host address of the RabbitMQ host (rabbitmq://host:port/vhost)</param>
+            <param name="configure"></param>
+        </member>
+        <member name="M:MassTransit.RabbitMqHostConfigurationExtensions.Host(MassTransit.IRabbitMqBusFactoryConfigurator,System.String,System.String,System.Action{MassTransit.RabbitMqTransport.Configuration.IRabbitMqHostConfigurator})">
+            <summary>
+            Configure a RabbitMQ host with a host name and virtual host
+            </summary>
+            <param name="configurator"></param>
+            <param name="virtualHost">The virtual host to use</param>
+            <param name="configure">The configuratino callback</param>
+            <param name="host">The host name of the broker</param>
+        </member>
+        <member name="M:MassTransit.RabbitMqHostConfigurationExtensions.ReceiveEndpoint(MassTransit.IRabbitMqBusFactoryConfigurator,MassTransit.RabbitMqTransport.IRabbitMqHost,System.Action{MassTransit.IRabbitMqReceiveEndpointConfigurator})">
+            <summary>
+            Declare a ReceiveEndpoint using a unique generated queue name. This queue defaults to auto-delete
+            and non-durable. By default all services bus instances include a default receiveEndpoint that is
+            of this type (created automatically upon the first receiver binding).
+            </summary>
+            <param name="configurator"></param>
+            <param name="host"></param>
+            <param name="configure"></param>
+        </member>
+        <member name="M:MassTransit.RabbitMqHostConfigurationExtensions.ManagementEndpoint(MassTransit.IRabbitMqBusFactoryConfigurator,MassTransit.RabbitMqTransport.IRabbitMqHost,System.Action{MassTransit.IRabbitMqReceiveEndpointConfigurator})">
+            <summary>
+            Registers a management endpoint on the bus, which can be used to control
+            filters and other management control points on the bus.
+            </summary>
+            <param name="configurator"></param>
+            <param name="host">The host where the endpoint is to be created</param>
+            <param name="configure">Configure additional values of the underlying receive endpoint</param>
+            <returns></returns>
+        </member>
+        <member name="P:MassTransit.IRabbitMqBusFactoryConfigurator.PublisherConfirmation">
+            <summary>
+            Enables RabbitMQ publish acknowledgement, so that the Task returned from Send/Publish 
+            is not completed until the message has been confirmed by the broker.
+            </summary>
+        </member>
+        <member name="M:MassTransit.IRabbitMqBusFactoryConfigurator.OverrideDefaultBusEndpointQueueName(System.String)">
+            <summary>
+            In most cases, this is not needed and should not be used. However, if for any reason the default bus
+            endpoint queue name needs to be changed, this will do it. Do NOT set it to the same name as a receive
+            endpoint or you will screw things up.
+            </summary>
+        </member>
+        <member name="M:MassTransit.IRabbitMqBusFactoryConfigurator.Host(MassTransit.RabbitMqTransport.RabbitMqHostSettings)">
+            <summary>
+            Configure a Host that can be connected. If only one host is specified, it is used as the default
+            host for receive endpoints.
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MassTransit.IRabbitMqBusFactoryConfigurator.ReceiveEndpoint(MassTransit.RabbitMqTransport.IRabbitMqHost,System.String,System.Action{MassTransit.IRabbitMqReceiveEndpointConfigurator})">
+            <summary>
+            Declare a ReceiveEndpoint on the broker and configure the endpoint settings and message consumers.
+            </summary>
+            <param name="host">The host for this endpoint</param>
+            <param name="queueName">The input queue name</param>
+            <param name="configure">The configuration method</param>
+        </member>
+        <member name="M:MassTransit.BusFactoryConfiguratorExtensions.CreateUsingRabbitMq(MassTransit.IBusFactorySelector,System.Action{MassTransit.IRabbitMqBusFactoryConfigurator})">
+            <summary>
+            Select RabbitMQ as the transport for the service bus
+            </summary>
+        </member>
+        <member name="M:MassTransit.RabbitMqSendContextExtensions.SetPriority(MassTransit.SendContext,System.Byte)">
+            <summary>
+            Sets the priority of a message sent to the broker
+            </summary>
+            <param name="context"></param>
+            <param name="priority"></param>
+        </member>
+        <member name="M:MassTransit.RabbitMqSendContextExtensions.SetAwaitAck(MassTransit.SendContext,System.Boolean)">
+            <summary>
+            Sets whether the send should wait for the ack from the broker, or if it should 
+            return immediately after the message is sent by the client.
+            </summary>
+            <param name="context"></param>
+            <param name="awaitAck"></param>
+        </member>
+        <member name="T:MassTransit.SchedulePublishExtensions">
+            <summary>
+            Extensions for scheduling publish/send message 
+            </summary>
+        </member>
+        <member name="M:MassTransit.SchedulePublishExtensions.SchedulePublish``1(MassTransit.ISendEndpoint,MassTransit.RabbitMqTransport.IRabbitMqHost,System.DateTime,``0)">
+            <summary>
+            Sends a ScheduleMessage command to the endpoint, using the specified arguments
+            </summary>
+            <typeparam name="T">The scheduled message type</typeparam>
+            <param name="endpoint">The endpoint of the message scheduling service</param>
+            <param name="host"></param>
+            <param name="scheduledTime">The time when the message should be sent to the endpoint</param>
+            <param name="message">The message to send</param>
+            <returns>A handled to the scheduled message</returns>
+        </member>
+        <member name="M:MassTransit.SchedulePublishExtensions.SchedulePublish``1(MassTransit.ISendEndpoint,MassTransit.RabbitMqTransport.IRabbitMqHost,System.DateTime,``0,MassTransit.Pipeline.IPipe{MassTransit.SendContext{MassTransit.Scheduling.ScheduleMessage{``0}}})">
+            <summary>
+            Sends a ScheduleMessage command to the endpoint, using the specified arguments
+            </summary>
+            <typeparam name="T">The scheduled message type</typeparam>
+            <param name="endpoint">The endpoint of the message scheduling service</param>
+            <param name="host"></param>
+            <param name="scheduledTime">The time when the message should be sent to the endpoint</param>
+            <param name="message">The message to send</param>
+            <param name="sendPipe"></param>
+            <returns>A handled to the scheduled message</returns>
+        </member>
+    </members>
+</doc>
